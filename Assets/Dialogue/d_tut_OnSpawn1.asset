@@ -1,0 +1,25 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c3347dbe1a057d64ab85e68f7384f38c, type: 3}
+  m_Name: d_tut_OnSpawn1
+  m_EditorClassIdentifier: 
+  dialogue:
+    description: On first player spawn
+    sentences:
+    - "Wellllllcome, darling! \n\n*Press E to continue..."
+    - This is your first shift at the Fantasy Costco is it not?
+    - 'Allow me to introduce myself...
+
+      I''m Garfield the Deals Warlock! I''m your new manager.
+
+      And what was your name again...?'
+    - '...Nick...? Strange name, but I dig it.'
