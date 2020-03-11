@@ -128,7 +128,7 @@ public abstract class GrabbableObject : MonoBehaviour
 
     public void MoveTo(Vector3 v)
     {
-        float smoothness = 20f;
+        float smoothness = 25f;
 
         myRigidbody.MovePosition(Vector3.Lerp(transform.position, v, Time.deltaTime * smoothness));
     }

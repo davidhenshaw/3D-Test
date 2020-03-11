@@ -7,13 +7,12 @@ public class ObjectManipulator : MonoBehaviour
 
     [Header("Object Manipulation")]
     [SerializeField] GrabbableObject heldObject;
-    [SerializeField] float maxGrabDistance = 10f;
+    [SerializeField] float maxGrabDistance = 3f;
+    [SerializeField] float maxHoldDistance = 1.5f;
     [SerializeField] LayerMask grabbablesMask;
     [SerializeField] LayerMask obstructionsMask;
-    Vector3 holdObjectAtPosition;
-    [SerializeField] float holdDistance = 10f;
-    [SerializeField] Transform ghostArm;
     [SerializeField] float throwStrength = 10f;
+    Vector3 holdObjectAtPosition;
 
     // Start is called before the first frame update
     void Start()
@@ -24,12 +23,13 @@ public class ObjectManipulator : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        ScaleArmBasedOnObstructions();
+        if(heldObject != null)
+        {
+            CheckObjectLineOfSight();
+        }
 
         if (heldObject != null)
         {
-            CheckHeldObject();
-
             if (heldObject.CanHold())
                 MoveHeldObject();
             else
@@ -37,6 +37,29 @@ public class ObjectManipulator : MonoBehaviour
         }
 
         CheckPlayerInput();
+    }
+
+    private void CheckPlayerInput()
+    {
+        if (Input.GetButtonDown("Fire1"))
+        {
+            if (heldObject == null)
+            {
+                GrabObject();
+            }
+            else
+            {
+                ReleaseHeldObject();
+            }
+        }
+
+        if (Input.GetButtonUp("Fire2"))
+        {
+            if (heldObject != null)
+            {
+                ThrowHeldObject();
+            }
+        }
     }
 
     // Attempts to grab the object in the player's current line of sight
@@ -63,13 +86,13 @@ public class ObjectManipulator : MonoBehaviour
 
     void MoveHeldObject()
     {
-        Vector3 targetPosition = Camera.main.transform.position + Camera.main.transform.forward * holdDistance;
+        Vector3 targetPosition = Camera.main.transform.position + Camera.main.transform.forward * maxHoldDistance;
         RaycastHit hitInfo;
         float minHoldDistance = 1f;
 
         if (Physics.Linecast(Camera.main.transform.position, targetPosition, out hitInfo, LayerMask.GetMask("Ground", "NoClip", "Default")))
         {
-            float adjustedDistance = Mathf.Clamp(hitInfo.distance, minHoldDistance, holdDistance);
+            float adjustedDistance = Mathf.Clamp(hitInfo.distance, minHoldDistance, maxHoldDistance);
             targetPosition = Camera.main.transform.position + Camera.main.transform.forward * adjustedDistance;
         }
 
@@ -80,9 +103,9 @@ public class ObjectManipulator : MonoBehaviour
     // where the player is trying to move it, drop the object
     float obstructionTimeout = 0.1f;
     float obstructionTimer = 0;
-    void CheckHeldObject()
+    void CheckObjectLineOfSight()
     {
-        Ray lineOfSight = new Ray(Camera.main.transform.position, Camera.main.transform.forward * holdDistance);
+        Ray lineOfSight = new Ray(Camera.main.transform.position, Camera.main.transform.forward * maxHoldDistance);
         RaycastHit hitInfo = new RaycastHit();
         Color rayColor = Color.green;
 
@@ -98,7 +121,7 @@ public class ObjectManipulator : MonoBehaviour
             obstructionTimer += Time.deltaTime;
 
         }
-        Debug.DrawLine(lineOfSight.origin, lineOfSight.origin + lineOfSight.direction * holdDistance, rayColor);
+        Debug.DrawLine(lineOfSight.origin, lineOfSight.origin + lineOfSight.direction * maxHoldDistance, rayColor);
     }
 
     private void ReleaseHeldObject()
@@ -120,39 +143,4 @@ public class ObjectManipulator : MonoBehaviour
         }
     }
 
-    void CheckPlayerInput()
-    {
-        if (Input.GetButtonDown("Fire1"))
-        {
-            if (heldObject == null)
-            {
-                GrabObject();
-            }
-            else
-            {
-                ReleaseHeldObject();
-            }
-        }
-
-        if (Input.GetButtonUp("Fire2"))
-        {
-            if (heldObject != null)
-            {
-                ThrowHeldObject();
-            }
-        }
-    }
-
-    private void ScaleArmBasedOnObstructions()
-    {
-        Ray lineOfSight = new Ray(Camera.main.transform.position, Camera.main.transform.forward);
-        RaycastHit hitInfo;
-        Physics.Linecast(lineOfSight.origin, lineOfSight.origin + lineOfSight.direction * 10f, out hitInfo, LayerMask.GetMask("Ground", "NoClip"));
-
-        //Draw the normal of the surface we just hit
-        if (hitInfo.collider != null)
-        {
-            Debug.DrawRay(hitInfo.point, hitInfo.normal, Color.blue);
-        }
-    }
 }
