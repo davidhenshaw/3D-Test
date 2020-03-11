@@ -1,5 +1,59 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &1513541427
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1513541428}
+  - component: {fileID: 1513541429}
+  m_Layer: 14
+  m_Name: ObjectManipulator
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1513541428
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513541427}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 2522913924296616138}
+  m_RootOrder: 0
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1513541429
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1513541427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ea995b39728ba014ab1dca7b46b43489, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  heldObject: {fileID: 0}
+  maxGrabDistance: 10
+  grabbablesMask:
+    serializedVersion: 2
+    m_Bits: 512
+  obstructionsMask:
+    serializedVersion: 2
+    m_Bits: 40449
+  holdDistance: 10
+  ghostArm: {fileID: 0}
+  throwStrength: 10
 --- !u!1 &2522913923908426762
 GameObject:
   m_ObjectHideFlags: 0
@@ -73,21 +127,21 @@ MonoBehaviour:
   jumpHeight: 3
   velocity: {x: 0, y: 0, z: 0}
   heldObject: {fileID: 0}
-  maxGrabDistance: 5
+  maxGrabDistance: 3
   grabbablesMask:
     serializedVersion: 2
     m_Bits: 512
   obstructionsMask:
     serializedVersion: 2
     m_Bits: 35328
-  holdDistance: 5
+  holdDistance: 1.5
   ghostArm: {fileID: 8742280189937194014}
   throwStrength: 4.85
   groundCheck: {fileID: 2522913924189404494}
   groundDistance: 0.4
   groundMask:
     serializedVersion: 2
-    m_Bits: 2048
+    m_Bits: 35328
 --- !u!114 &334508273
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -244,7 +298,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 1.547, z: -0.022}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 1513541428}
   m_Father: {fileID: 2522913923908426775}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

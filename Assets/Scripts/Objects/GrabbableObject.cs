@@ -5,20 +5,22 @@ using UnityEngine;
 
 public abstract class GrabbableObject : MonoBehaviour
 {
-    protected Vector3 iVelocity;
-    Vector3 prevPosition;
+
+    // Cached References
     protected Rigidbody myRigidbody;
     protected Collider myCollider;
+
+    // State Variables
+    protected Vector3 iVelocity;
+    Vector3 prevPosition;
+
     [SerializeField] AudioClip[] impactSounds;
     float impactSoundVolume = 0.85f;
+
     private bool isGrabbed;
     protected bool canHold = true;
-    
-    private float wallCollisionTimer = 0;
-    private float wallCollisionTimeout = 0.15f;
-    private float clipOverlapThreshold = 0.81f;
-
     protected int timesDropped;
+
     [Header("EventTriggers")]
     [SerializeField] protected GameEvent[] triggerOnDrop;
     [SerializeField] protected int[] triggerOnNthDrop;
@@ -26,6 +28,7 @@ public abstract class GrabbableObject : MonoBehaviour
     public event Action onDropEvent;
     public event Action onPickUpEvent;
 
+    // Methods
     public int TimesDropped { get => timesDropped; }
 
     public abstract void OnGrab();
@@ -128,30 +131,9 @@ public abstract class GrabbableObject : MonoBehaviour
 
     public void MoveTo(Vector3 v)
     {
-        float smoothness = 20f;
+        float smoothness = 25f;
 
         myRigidbody.MovePosition(Vector3.Lerp(transform.position, v, Time.deltaTime * smoothness));
-    }
-
-    private float GetColliderOverlap(Collision collision)
-    {
-        ContactPoint[] contactPoints = new ContactPoint[collision.contactCount];
-        float[] magnitudes = new float[collision.contactCount];
-
-        collision.GetContacts(contactPoints);
-        
-
-        // get magnitudes of the vector between a contact point to the center of the game object
-        for(int i = 0; i < magnitudes.Length; i++)
-        {
-            magnitudes[i] = (contactPoints[i].point - myCollider.bounds.center).magnitude;
-            Debug.DrawLine(myCollider.bounds.center, contactPoints[i].point, Color.white);
-        }
-        
-
-        float smallestMagnitude = Mathf.Min(magnitudes);
-        
-        return smallestMagnitude;
     }
 
     private void ProcessImpactSounds(Collision collision)
@@ -174,38 +156,7 @@ public abstract class GrabbableObject : MonoBehaviour
     // If this object overlaps too much with a wall, the player drops it automatically
     private void OnCollisionStay(Collision collision)
     {
-        int otherLayer = collision.collider.gameObject.layer;
-
-        Debug.DrawRay(myCollider.bounds.center, collision.impulse, Color.yellow);
         
-        
-        //if (otherLayer == LayerMask.NameToLayer("NoClip")       // If this object intersects environmental objects,
-        //    || otherLayer == LayerMask.NameToLayer("Ground") 
-        //    && isGrabbed) 
-        //{
-        //    /*Debug.Log("Overlap: " + GetColliderOverlap(collision));*/
-        //    if(GetColliderOverlap(collision) < clipOverlapThreshold)
-        //    {
-        //        canHold = false;
-        //    }
-
-        //}
-
-        
-        //if (otherLayer == LayerMask.NameToLayer("NoClip") // If the object is overlaping a wall while not grabbed for <wallCollisionTimeout> seconds, the player can pick it up again
-        //    || otherLayer == LayerMask.NameToLayer("Ground")
-        //    && !isGrabbed)
-        //{
-        //    if (wallCollisionTimer < wallCollisionTimeout)
-        //    {
-        //        wallCollisionTimer += Time.deltaTime;
-        //    }
-        //    else
-        //    {
-        //        canHold = true;
-        //        wallCollisionTimer = 0f;
-        //    }
-        //}
     }
 
     // As soon as this object leaves the wall it was stuck in, set canHold to true

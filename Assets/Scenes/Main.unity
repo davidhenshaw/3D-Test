@@ -23992,40 +23992,13 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 2522913923908426772, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2522913923908426773, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f,
-        type: 3}
-      propertyPath: groundMask.m_Bits
-      value: 35328
-      objectReference: {fileID: 0}
-    - target: {fileID: 2522913923908426773, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f,
-        type: 3}
-      propertyPath: holdDistance
-      value: 1.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 2522913923908426773, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2522913923908426773, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f,
-        type: 3}
+    - target: {fileID: 1513541429, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f, type: 3}
       propertyPath: maxGrabDistance
       value: 3
       objectReference: {fileID: 0}
-    - target: {fileID: 2522913924144428214, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2522913924296616149, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f,
-        type: 3}
-      propertyPath: m_Enabled
-      value: 1
+    - target: {fileID: 1513541429, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f, type: 3}
+      propertyPath: holdDistance
+      value: 1.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f, type: 3}
@@ -47675,45 +47648,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1279173256}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1279574218 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2522913924296616143, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f,
-    type: 3}
-  m_PrefabInstance: {fileID: 668291145}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1279574225
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1279574218}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c26f29bdb01e3444ab123d8e0e4d623f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mouseSensitivity: 64
-  xRotation: 0
-  playerController: {fileID: 0}
-  playerTransform: {fileID: 2023742377}
-  arrow: {fileID: 196611061}
 --- !u!1001 &1282854101
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52767,12 +52701,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 429468, guid: e6969c2c79e4da842b8bc1ed7b1c19fb,
     type: 3}
   m_PrefabInstance: {fileID: 1429994711}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1431342924 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 8742280189937194014, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f,
-    type: 3}
-  m_PrefabInstance: {fileID: 668291145}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1435204842
 PrefabInstance:
@@ -62867,12 +62795,6 @@ Transform:
   m_CorrespondingSourceObject: {fileID: 424888, guid: d39f9ef3f9d3b94449ee1a524428fe38,
     type: 3}
   m_PrefabInstance: {fileID: 1720126726}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &1721595004 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2522913924189404494, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f,
-    type: 3}
-  m_PrefabInstance: {fileID: 668291145}
   m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1722079237
 PrefabInstance:
@@ -73085,69 +73007,6 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 2023476191}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &2023742373 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2522913923908426762, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f,
-    type: 3}
-  m_PrefabInstance: {fileID: 668291145}
-  m_PrefabAsset: {fileID: 0}
---- !u!4 &2023742377 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 2522913923908426775, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f,
-    type: 3}
-  m_PrefabInstance: {fileID: 668291145}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &2023742378
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2023742373}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6d7f61bbc82d6d94ba00a867ba1a439e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Name: 
-  m_EditorClassIdentifier: 
-  groundSpeed: 9
-  airSpeed: 2
-  playerGravity: -9.81
-  jumpHeight: 3
-  velocity: {x: 0, y: 0, z: 0}
-  heldObject: {fileID: 0}
-  maxGrabDistance: 10
-  grabbablesMask:
-    m_Bits: 512
-  obstructionsMask:
-    m_Bits: 35328
-  holdObjectAtPosition: {x: 0, y: 0, z: 0}
-  holdDistance: 3
-  ghostArm: {fileID: 1431342924}
-  throwStrength: 4.85
-  controller: {fileID: 0}
-  mouseLook: {fileID: 0}
-  groundCheck: {fileID: 1721595004}
-  groundDistance: 0.4
-  groundMask:
-    m_Bits: 2560
-  obstructionTimeout: 0.1
-  obstructionTimer: 0
 --- !u!1001 &2023788959
 PrefabInstance:
   m_ObjectHideFlags: 0
