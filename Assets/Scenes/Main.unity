@@ -23992,6 +23992,14 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1513541429, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f, type: 3}
+      propertyPath: maxGrabDistance
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1513541429, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f, type: 3}
+      propertyPath: holdDistance
+      value: 1.5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: cd3d61c4fe2d0c241a58a4d4cae84a5f, type: 3}
 --- !u!1001 &669175800
