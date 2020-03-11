@@ -128,10 +128,10 @@ public abstract class GrabbableObject : MonoBehaviour
 
     public void MoveTo(Vector3 v)
     {
-        //transform.position = v;
-        myRigidbody.MovePosition(v);
-    }
+        float smoothness = 20f;
 
+        myRigidbody.MovePosition(Vector3.Lerp(transform.position, v, Time.deltaTime * smoothness));
+    }
 
     private float GetColliderOverlap(Collision collision)
     {
@@ -179,33 +179,33 @@ public abstract class GrabbableObject : MonoBehaviour
         Debug.DrawRay(myCollider.bounds.center, collision.impulse, Color.yellow);
         
         
-        if (otherLayer == LayerMask.NameToLayer("NoClip")       // If this object intersects environmental objects,
-            || otherLayer == LayerMask.NameToLayer("Ground") 
-            && isGrabbed) 
-        {
-            /*Debug.Log("Overlap: " + GetColliderOverlap(collision));*/
-            if(GetColliderOverlap(collision) < clipOverlapThreshold)
-            {
-                canHold = false;
-            }
+        //if (otherLayer == LayerMask.NameToLayer("NoClip")       // If this object intersects environmental objects,
+        //    || otherLayer == LayerMask.NameToLayer("Ground") 
+        //    && isGrabbed) 
+        //{
+        //    /*Debug.Log("Overlap: " + GetColliderOverlap(collision));*/
+        //    if(GetColliderOverlap(collision) < clipOverlapThreshold)
+        //    {
+        //        canHold = false;
+        //    }
 
-        }
+        //}
 
         
-        if (otherLayer == LayerMask.NameToLayer("NoClip") // If the object is overlaping a wall while not grabbed for <wallCollisionTimeout> seconds, the player can pick it up again
-            || otherLayer == LayerMask.NameToLayer("Ground")
-            && !isGrabbed)
-        {
-            if (wallCollisionTimer < wallCollisionTimeout)
-            {
-                wallCollisionTimer += Time.deltaTime;
-            }
-            else
-            {
-                canHold = true;
-                wallCollisionTimer = 0f;
-            }
-        }
+        //if (otherLayer == LayerMask.NameToLayer("NoClip") // If the object is overlaping a wall while not grabbed for <wallCollisionTimeout> seconds, the player can pick it up again
+        //    || otherLayer == LayerMask.NameToLayer("Ground")
+        //    && !isGrabbed)
+        //{
+        //    if (wallCollisionTimer < wallCollisionTimeout)
+        //    {
+        //        wallCollisionTimer += Time.deltaTime;
+        //    }
+        //    else
+        //    {
+        //        canHold = true;
+        //        wallCollisionTimer = 0f;
+        //    }
+        //}
     }
 
     // As soon as this object leaves the wall it was stuck in, set canHold to true

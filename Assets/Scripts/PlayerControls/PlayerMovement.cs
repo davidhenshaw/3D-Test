@@ -44,12 +44,12 @@ public class PlayerMovement : MonoBehaviour
 
         if (heldObject != null)
         {
+            CheckHeldObject();    
             
             if (heldObject.CanHold())
-                HoldObject();
+                MoveHeldObject();
             else
                 ReleaseHeldObject();
-            CheckHeldObject();
         }
 
         CheckPlayerInput();
@@ -122,11 +122,19 @@ public class PlayerMovement : MonoBehaviour
         Debug.DrawLine(ray.origin, ray.origin + ray.direction*maxGrabDistance, rayColor);
     }
 
-    void HoldObject()
+    void MoveHeldObject()
     {
-        holdObjectAtPosition = Camera.main.transform.position + Camera.main.transform.forward * holdDistance;
+        Vector3 targetPosition = Camera.main.transform.position + Camera.main.transform.forward * holdDistance;
+        RaycastHit hitInfo;
+        float minHoldDistance = 1f;
 
-        heldObject.MoveTo(holdObjectAtPosition);
+        if (Physics.Linecast(Camera.main.transform.position, targetPosition, out hitInfo, LayerMask.GetMask("Ground", "NoClip", "Default")))
+        {
+            float adjustedDistance = Mathf.Clamp(hitInfo.distance, minHoldDistance, holdDistance);
+            targetPosition = Camera.main.transform.position + Camera.main.transform.forward * adjustedDistance;
+        }
+
+        heldObject.MoveTo(targetPosition);
     }
 
     // If the held object is too far away from 
@@ -135,23 +143,12 @@ public class PlayerMovement : MonoBehaviour
     float obstructionTimer = 0;
     void CheckHeldObject()
     {
-        //switch(heldObject.gameObject.tag)
-        //{
-        //    case "HotIce":
-        //        if(!heldObject.CanHold())
-        //        {
-        //            heldObject.Release();
-        //        }
-        //        break;
-        //}
 
         Ray lineOfSight = new Ray(Camera.main.transform.position, Camera.main.transform.forward * holdDistance);
         RaycastHit hitInfo = new RaycastHit();
-        Physics.Linecast(lineOfSight.origin, lineOfSight.origin + lineOfSight.direction * holdDistance, out hitInfo, obstructionsMask);
         Color rayColor = Color.green;
         
-
-        if(hitInfo.transform != null)
+        if(Physics.Linecast(lineOfSight.origin, heldObject.transform.position, out hitInfo, obstructionsMask))
         {
             Debug.Log("Line of Sight blocked by: " + hitInfo.collider.gameObject.name);
             rayColor = Color.red;
