@@ -85,6 +85,7 @@
     <Compile Include="Assets\Scripts\Objects\SceneManager.cs" />
     <Compile Include="Assets\Scripts\PlayerControls\CameraController.cs" />
     <Compile Include="Assets\Scripts\PlayerControls\MouseLook.cs" />
+    <Compile Include="Assets\Scripts\PlayerControls\ObjectManipulator.cs" />
     <Compile Include="Assets\Scripts\PlayerControls\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerControls\PlayerMovement.cs" />
     <Compile Include="Assets\Scripts\z_Deprecated\Mission1.cs" />
