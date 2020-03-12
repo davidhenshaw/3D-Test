@@ -29,7 +29,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HorizontalMovement();
+        if (isGrounded())
+            HorizontalMovement();
+        else
+            AirHorizontalMovement();
+
         VerticalMovement();
     }
 
