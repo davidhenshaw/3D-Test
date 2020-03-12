@@ -12,6 +12,8 @@ public class MouseLook : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        //If the application tries to quit, release the mouse
+        Application.quitting += ReleaseMouse;
         playerController = GetComponent<PlayerController>();
         CaptureMouse();
     }

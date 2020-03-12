@@ -82,12 +82,12 @@
     <Compile Include="Assets\Scripts\Objects\Ice.cs" />
     <Compile Include="Assets\Scripts\Objects\IceSpawner.cs" />
     <Compile Include="Assets\Scripts\Objects\IMeltable.cs" />
-    <Compile Include="Assets\Scripts\Objects\SceneManager.cs" />
     <Compile Include="Assets\Scripts\PlayerControls\CameraController.cs" />
     <Compile Include="Assets\Scripts\PlayerControls\MouseLook.cs" />
     <Compile Include="Assets\Scripts\PlayerControls\ObjectManipulator.cs" />
     <Compile Include="Assets\Scripts\PlayerControls\PlayerController.cs" />
     <Compile Include="Assets\Scripts\PlayerControls\PlayerMovement.cs" />
+    <Compile Include="Assets\Scripts\PlayerControls\SceneManager.cs" />
     <Compile Include="Assets\Scripts\z_Deprecated\Mission1.cs" />
     <Compile Include="Assets\Scripts\z_Deprecated\MissionBehavior.cs" />
     <Compile Include="Assets\Scripts\z_Deprecated\StateDirector.cs" />
