@@ -13,6 +13,16 @@ public class PlayerMovement : MonoBehaviour
     Vector3 xzVelocity = Vector3.zero;
 
 
+    //[Header("Object Manipulation")]
+    //[SerializeField] GrabbableObject heldObject;
+    //[SerializeField] float maxGrabDistance = 10f;
+    //[SerializeField] LayerMask grabbablesMask;
+    //[SerializeField] LayerMask obstructionsMask;
+    //Vector3 holdObjectAtPosition;
+    //[SerializeField] float holdDistance = 10f;
+    //[SerializeField] Transform ghostArm;
+    //[SerializeField] float throwStrength = 10f;
+
     // Cached references
     CharacterController controller;
 
@@ -29,11 +39,15 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+<<<<<<< HEAD
         if (isGrounded())
             HorizontalMovement();
         //else
         //    AirHorizontalMovement();
 
+=======
+        HorizontalMovement();
+>>>>>>> parent of 03979047... Update player horizontal movement
         VerticalMovement();
     }
 
@@ -43,11 +57,15 @@ public class PlayerMovement : MonoBehaviour
         float moveSpeed = groundSpeed;
 
 
-        float xAxis = Input.GetAxis("Horizontal");
-        float yAxis = Input.GetAxis("Vertical");
+        float dX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+        float dZ = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
 
+<<<<<<< HEAD
         Vector3 moveDirection = transform.forward * yAxis + transform.right * xAxis;
         xzVelocity = moveDirection.normalized * moveSpeed;
+=======
+        Vector3 moveVector = transform.forward * dZ + transform.right * dX;
+>>>>>>> parent of 03979047... Update player horizontal movement
 
         controller.Move(xzVelocity * Time.deltaTime);
     }
@@ -60,11 +78,14 @@ public class PlayerMovement : MonoBehaviour
     // Handles all vertical movement
     void VerticalMovement()
     {
-        float downwardPushConstant = -4f; // Forces the player down to ensure small gaps won't de-ground the player
 
         if(isGrounded() && yVelocity.y < 0)
         {
+<<<<<<< HEAD
             yVelocity.y = downwardPushConstant;
+=======
+            velocity.y = -2f;
+>>>>>>> parent of 03979047... Update player horizontal movement
         }
 
         Vector3 initYVel = yVelocity;
@@ -83,9 +104,12 @@ public class PlayerMovement : MonoBehaviour
         }
     }
 
+<<<<<<< HEAD
     void AirHorizontalMovement()
     {
         controller.Move(xzVelocity * Time.deltaTime);
     }
 
+=======
+>>>>>>> parent of 03979047... Update player horizontal movement
 }

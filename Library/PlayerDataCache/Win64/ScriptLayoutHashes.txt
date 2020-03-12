@@ -1,6 +1,6 @@
 Win64
 PlayerPath?
-C:/Users/david/Documents/Unity Projects/3D Test/Builds/Windows/Release/Ver 0.2.1/3D Test.exe
+C:/Users/david/Documents/Unity Projects/3D Test/Builds/Windows/Debug/Ver 0.2.1/3D Test.exe
 SceneListBegin?
 Assets/Scenes/Main.unity
 SceneListEnd?
