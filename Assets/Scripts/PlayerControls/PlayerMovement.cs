@@ -13,25 +13,6 @@ public class PlayerMovement : MonoBehaviour
     Vector3 xzVelocity = Vector3.zero;
     float downwardPushConstant = -2f;
 
-    //[Header("Object Manipulation")]
-    //[SerializeField] GrabbableObject heldObject;
-    //[SerializeField] float maxGrabDistance = 10f;
-    //[SerializeField] LayerMask grabbablesMask;
-    //[SerializeField] LayerMask obstructionsMask;
-    //Vector3 holdObjectAtPosition;
-    //[SerializeField] float holdDistance = 10f;
-    //[SerializeField] Transform ghostArm;
-    //[SerializeField] float throwStrength = 10f;
-
-    //[Header("Object Manipulation")]
-    //[SerializeField] GrabbableObject heldObject;
-    //[SerializeField] float maxGrabDistance = 10f;
-    //[SerializeField] LayerMask grabbablesMask;
-    //[SerializeField] LayerMask obstructionsMask;
-    //Vector3 holdObjectAtPosition;
-    //[SerializeField] float holdDistance = 10f;
-    //[SerializeField] Transform ghostArm;
-    //[SerializeField] float throwStrength = 10f;
 
     // Cached references
     CharacterController controller;
@@ -57,15 +38,14 @@ public class PlayerMovement : MonoBehaviour
     private void HorizontalMovement()
     {
         float moveSpeed = groundSpeed;
-
+        float maxDistance = moveSpeed * Time.deltaTime;
 
         float dX= Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         float dY = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
 
-        Vector3 movement = transform.forward * dY + transform.right * dX;
-        //xzVelocity = movement.normalized * moveSpeed;
+        Vector3 movement = (transform.forward * dY + transform.right * dX);
 
-        controller.Move(movement);
+        controller.Move(Vector3.ClampMagnitude(movement, maxDistance));
     }
 
     bool isGrounded()
