@@ -11,16 +11,6 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpHeight = 3f;
     [SerializeField] Vector3 velocity = Vector3.zero;
 
-    //[Header("Object Manipulation")]
-    //[SerializeField] GrabbableObject heldObject;
-    //[SerializeField] float maxGrabDistance = 10f;
-    //[SerializeField] LayerMask grabbablesMask;
-    //[SerializeField] LayerMask obstructionsMask;
-    //Vector3 holdObjectAtPosition;
-    //[SerializeField] float holdDistance = 10f;
-    //[SerializeField] Transform ghostArm;
-    //[SerializeField] float throwStrength = 10f;
-
     // Cached references
     CharacterController controller;
 
@@ -37,7 +27,11 @@ public class PlayerMovement : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        HorizontalMovement();
+        if (isGrounded())
+            HorizontalMovement();
+       //else
+       //     AirHorizontalMovement();
+
         VerticalMovement();
     }
 
@@ -47,10 +41,12 @@ public class PlayerMovement : MonoBehaviour
         float moveSpeed = groundSpeed;
 
 
-        float dX = Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-        float dZ = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+        float xAxis = Input.GetAxis("Horizontal");
+        float yAxis = Input.GetAxis("Vertical");
 
-        Vector3 moveVector = transform.forward * dZ + transform.right * dX;
+        Vector3 moveVector = transform.forward * yAxis + transform.right * xAxis;
+
+        moveVector = moveVector.normalized * moveSpeed * Time.deltaTime;
 
         controller.Move(moveVector);
     }
@@ -63,10 +59,11 @@ public class PlayerMovement : MonoBehaviour
     // Handles all vertical movement
     void VerticalMovement()
     {
+        float downwardPushConstant = -4f; // Forces the player down to ensure small gaps won't de-ground the player
 
         if(isGrounded() && velocity.y < 0)
         {
-            velocity.y = -2f;
+            velocity.y = downwardPushConstant;
         }
 
         Vector3 initYVel = velocity;
@@ -83,6 +80,13 @@ public class PlayerMovement : MonoBehaviour
         {
             velocity.y = (Mathf.Sqrt(-2 * jumpHeight * playerGravity));
         }
+    }
+
+    void AirHorizontalMovement()
+    {
+        Vector3 moveVector = new Vector3(velocity.x, 0, velocity.z) * Time.deltaTime;
+
+        controller.Move(moveVector);
     }
 
 }

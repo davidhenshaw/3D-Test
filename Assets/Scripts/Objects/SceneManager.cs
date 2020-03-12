@@ -20,12 +20,17 @@ public class SceneManager : MonoBehaviour
             if (quitTimer < timeToQuit)
             {
                 quitTimer += Time.deltaTime;
+                
             }
             else
             {
                 Application.Quit();
             }
-
         }
+        else
+        {
+            quitTimer = 0;
+        }
+
     }
 }
