@@ -6,7 +6,7 @@ using UnityEngine;
 public class PlayerMovement : MonoBehaviour
 {
     [SerializeField] float groundSpeed = 9f;
-    [SerializeField] float airSpeed = 2f;
+    [SerializeField] float airSpeed = 1f;
     [SerializeField] float playerGravity = -9.81f;
     [SerializeField] float jumpHeight = 3f;
     Vector3 yVelocity = Vector3.zero;
@@ -45,9 +45,9 @@ public class PlayerMovement : MonoBehaviour
         float maxDistance = moveSpeed * Time.deltaTime;
 
         float dX= Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-        float dY = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+        float dZ = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
 
-        movement = Vector3.ClampMagnitude(transform.forward * dY + transform.right * dX , maxDistance);
+        movement = Vector3.ClampMagnitude(transform.forward * dZ + transform.right * dX , maxDistance);
 
         controller.Move(movement);
     }
@@ -88,6 +88,17 @@ public class PlayerMovement : MonoBehaviour
 
     void AirHorizontalMovement()
     {
+        float maxDistance = groundSpeed * Time.deltaTime;
+        float maxInfluence = airSpeed * Time.deltaTime;
+
+        float dX = Input.GetAxis("Horizontal") * airSpeed * Time.deltaTime;
+        float dZ = Input.GetAxis("Vertical") * airSpeed * Time.deltaTime;
+
+        Vector3 airInfluence = transform.forward * dZ + transform.right * dX;
+
+        airInfluence = Vector3.ClampMagnitude(airInfluence, maxInfluence);
+        movement = Vector3.ClampMagnitude(movement + airInfluence, maxDistance);
+
         controller.Move(movement);
     }
 
