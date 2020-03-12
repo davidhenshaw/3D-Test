@@ -59,13 +59,13 @@ public class PlayerMovement : MonoBehaviour
         float moveSpeed = groundSpeed;
 
 
-        float xAxis= Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
-        float yAxis = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
+        float dX= Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
+        float dY = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
 
-        Vector3 moveDirection = transform.forward * yAxis + transform.right * xAxis;
-        xzVelocity = moveDirection.normalized * moveSpeed;
+        Vector3 movement = transform.forward * dY + transform.right * dX;
+        //xzVelocity = movement.normalized * moveSpeed;
 
-        controller.Move(xzVelocity * Time.deltaTime);
+        controller.Move(movement);
     }
 
     bool isGrounded()
