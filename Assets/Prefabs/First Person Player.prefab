@@ -45,14 +45,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   heldObject: {fileID: 0}
   maxGrabDistance: 10
+  maxHoldDistance: 1.5
   grabbablesMask:
     serializedVersion: 2
     m_Bits: 512
   obstructionsMask:
     serializedVersion: 2
     m_Bits: 40449
-  holdDistance: 10
-  ghostArm: {fileID: 0}
   throwStrength: 10
 --- !u!1 &2522913923908426762
 GameObject:
@@ -123,20 +122,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   groundSpeed: 5
   airSpeed: 2
-  playerGravity: -14.43
-  jumpHeight: 3
-  velocity: {x: 0, y: 0, z: 0}
-  heldObject: {fileID: 0}
-  maxGrabDistance: 3
-  grabbablesMask:
-    serializedVersion: 2
-    m_Bits: 512
-  obstructionsMask:
-    serializedVersion: 2
-    m_Bits: 35328
-  holdDistance: 1.5
-  ghostArm: {fileID: 8742280189937194014}
-  throwStrength: 4.85
+  playerGravity: -20
+  jumpHeight: 2
   groundCheck: {fileID: 2522913924189404494}
   groundDistance: 0.4
   groundMask:

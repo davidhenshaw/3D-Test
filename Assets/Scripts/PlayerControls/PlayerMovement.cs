@@ -11,8 +11,7 @@ public class PlayerMovement : MonoBehaviour
     [SerializeField] float jumpHeight = 3f;
     Vector3 yVelocity = Vector3.zero;
     Vector3 xzVelocity = Vector3.zero;
-    float downwardPushConstant = -2f;
-
+    [SerializeField] float downwardPushConstant = -4f;
 
     // Cached references
     CharacterController controller;
@@ -35,6 +34,7 @@ public class PlayerMovement : MonoBehaviour
     }
 
     //  Handles all horizontal movement
+    private Vector3 movement;
     private void HorizontalMovement()
     {
         float moveSpeed = groundSpeed;
@@ -43,9 +43,14 @@ public class PlayerMovement : MonoBehaviour
         float dX= Input.GetAxis("Horizontal") * moveSpeed * Time.deltaTime;
         float dY = Input.GetAxis("Vertical") * moveSpeed * Time.deltaTime;
 
-        Vector3 movement = (transform.forward * dY + transform.right * dX);
+        movement = Vector3.ClampMagnitude(transform.forward * dY + transform.right * dX , maxDistance);
 
-        controller.Move(Vector3.ClampMagnitude(movement, maxDistance));
+        controller.Move(movement);
+    }
+
+    private Vector3 movementToVelocity(Vector3 move)
+    {
+        return move / Time.deltaTime;
     }
 
     bool isGrounded()
@@ -79,7 +84,7 @@ public class PlayerMovement : MonoBehaviour
 
     void AirHorizontalMovement()
     {
-        controller.Move(xzVelocity * Time.deltaTime);
+        controller.Move(movement);
     }
 
 
