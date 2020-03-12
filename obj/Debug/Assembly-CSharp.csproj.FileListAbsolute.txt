@@ -280,3 +280,5 @@ C:\Users\david\Documents\Unity Projects\3D Test\obj\Debug\Assembly-CSharp.csproj
 C:\Users\david\Documents\Unity Projects\3D Test\obj\Debug\Assembly-CSharp.csproj.CopyComplete
 C:\Users\david\Documents\Unity Projects\3D Test\obj\Debug\Assembly-CSharp.dll
 C:\Users\david\Documents\Unity Projects\3D Test\obj\Debug\Assembly-CSharp.pdb
+C:\Users\david\Documents\Unity Projects\3D Test\Temp\bin\Debug\UnityEngine.SpatialTrackingModule.dll
+C:\Users\david\Documents\Unity Projects\3D Test\Temp\bin\Debug\UnityEngine.SpatialTrackingModule.xml
