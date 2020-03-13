@@ -1,6 +1,6 @@
 OSXUniversal
 PlayerPath?
-C:/Users/david/Documents/Unity Projects/3D Test/Builds/Windows/Release/Ver 0.2.1.app
+C:/Users/david/Documents/Unity Projects/3D Test/Builds/Mac/Ver 0.2.2.app
 SceneListBegin?
 Assets/Scenes/Main.unity
 SceneListEnd?
@@ -130,8 +130,9 @@ db298ee9c1c7e98c5cefe17fc9b51b3f Assembly-CSharp.dll:.MissionManager
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.Analytics.Editor.dll:UnityEditor.Analytics.AnalyticsEventTrackerEditor
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.StateDirector
 71bb6a6b6c8f052f948db64c7dd3ca4f Unity.TextMeshPro.dll:TMPro.TMP_SpriteAnimator
-88b6a7967373bd93363c2644b9b45799 Assembly-CSharp.dll:.PlayerMovement
+369832caff39523dc68b4f472ea17644 Assembly-CSharp.dll:.PlayerMovement
 4fd8bf02e3089425d3502e26c44ba31a Unity.TextMeshPro.dll:TMPro.TextContainer
+ce6436bc77974528330c2a61cc532998 Assembly-CSharp.dll:.ObjectManipulator
 e6ae40841db498b6e673877ac45ad208 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkAnimator
 71bb6a6b6c8f052f948db64c7dd3ca4f UnityEngine.Networking.dll:UnityEngine.Networking.NetworkBehaviour
 1dcb82730d983b77cec736c6ef19f814 UnityEngine.Networking.dll:UnityEngine.Networking.NetworkDiscovery
@@ -180,4 +181,3 @@ bbc93e9ae02d1fb65d143f5d205ddf78 Assembly-CSharp.dll:.DialogueEvent
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.MissionContinueEvent
 326db970371009455200c198cc356993 Assembly-CSharp.dll:.AwakeDetector
 71bb6a6b6c8f052f948db64c7dd3ca4f Assembly-CSharp.dll:.MissionCompleteEvent
-ce6436bc77974528330c2a61cc532998 Assembly-CSharp.dll:.ObjectManipulator
